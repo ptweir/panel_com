@@ -23,7 +23,7 @@ import serial
 import types
 
 class PanelCom:
-    def __init__( self, userport='/dev/ttyS0' ):
+    def __init__( self, userport='/dev/ttyUSB0' ):
         self.ser = serial.Serial(
             port=userport,               #number of device, numbering starts at
                                          #zero. if everything fails, the user
@@ -31,7 +31,7 @@ class PanelCom:
                                          #that this isn't portable anymore
                                          #if no port is specified an unconfigured
                                          #an closed serial port object is created
-            baudrate=115200,#921600,#19200,              #baudrate
+            baudrate=921600, #115200, 19200,              #baudrate
             bytesize=serial.EIGHTBITS,   #number of databits
             parity=serial.PARITY_NONE,   #enable parity checking
             stopbits=serial.STOPBITS_ONE,#number of stopbits

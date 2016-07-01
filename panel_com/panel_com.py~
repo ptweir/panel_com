@@ -9,6 +9,7 @@ controller.
    * translated into Python by SAB (2006?)
    * made into a class by JAB 4/8/07
    * made into a stand alone python package by Will Dickson
+   * posted into github with small edits by Peter Weir 2016-07-01
  
 """
 
@@ -30,7 +31,7 @@ class PanelCom:
                                          #that this isn't portable anymore
                                          #if no port is specified an unconfigured
                                          #an closed serial port object is created
-            baudrate=115200,#921600,#19200,              #baudrate
+            baudrate=921600, #115200, 19200,              #baudrate
             bytesize=serial.EIGHTBITS,   #number of databits
             parity=serial.PARITY_NONE,   #enable parity checking
             stopbits=serial.STOPBITS_ONE,#number of stopbits

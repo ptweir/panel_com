@@ -1,5 +1,6 @@
 panel_com
 =============
+
 panel_comm provides a serial port interface to Michael Reiser's Panel controller
  
 Installation

@@ -31,7 +31,7 @@ class PanelCom:
                                          #that this isn't portable anymore
                                          #if no port is specified an unconfigured
                                          #an closed serial port object is created
-            baudrate=921600, #115200, 19200,              #baudrate
+            baudrate=115200,#921600, #115200, 19200,              #baudrate
             bytesize=serial.EIGHTBITS,   #number of databits
             parity=serial.PARITY_NONE,   #enable parity checking
             stopbits=serial.STOPBITS_ONE,#number of stopbits
@@ -84,6 +84,16 @@ class PanelCom:
         if xpos < 0 or xpos > 255 or ypos < 0 or ypos > 255:
             raise ValueError
         self.send(chr(0x05) + chr(0x70) + chr(xpos) + chr(0x00) + chr(ypos) + chr(0x00))
+
+    def SetAO(self, chan, val):
+        if type(chan) != types.IntType or type(val) != types.IntType:
+            raise TypeError
+        if chan < 1 or chan > 4 or abs(val) > 255:
+            raise ValueError
+        if val > 0:
+            self.send(chr(0x04) + chr(0x10) + chr(chan) + chr(0x00) + chr(val))
+        else:
+            self.send(chr(0x04) + chr(0x11) + chr(chan) + chr(0x00) + chr(abs(val)))
 
     def Address( self, oldaddr, newaddr ):
         if type(oldaddr) != types.IntType or type(newaddr) != types.IntType:
